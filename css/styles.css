@@ -1,0 +1,459 @@
+/* Base styles */
+:root {
+  /* Light mode variables */
+  --bg-color: #f5f5f5;
+  --text-color: #333;
+  --card-bg: #fff;
+  --shadow-color: rgba(0,0,0,0.1);
+  --border-color: #eee;
+  --highlight-color: #f0f0f0;
+  
+  /* Button colors */
+  --btn-primary: #4CAF50;
+  --btn-primary-hover: #45a049;
+  --btn-cleanup: #2196F3;
+  --btn-cleanup-hover: #0b7dda;
+  --btn-mood: #9C27B0;
+  --btn-mood-hover: #7B1FA2;
+  --btn-remove: #f44336;
+  --btn-remove-hover: #d32f2f;
+  --btn-adopted: #8bc34a;
+  --btn-adopted-hover: #7cb342;
+  
+  /* Console colors */
+  --console-bg: #333;
+  --console-text: #fff;
+  --console-birthday: #FF9800;
+  --console-cleanup: #2196F3;
+  --console-mood: #E91E63;
+  --console-adopted: #8bc34a;
+  --console-communication: #4CAF50;
+}
+
+/* Dark mode variables */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg-color: #121212;
+    --text-color: #e0e0e0;
+    --card-bg: #1e1e1e;
+    --shadow-color: rgba(0,0,0,0.3);
+    --border-color: #333;
+    --highlight-color: #2c2c2c;
+    
+    /* Adjust button colors for better contrast in dark mode */
+    --btn-primary: #5CDF60;
+    --btn-primary-hover: #4cd050;
+    --btn-cleanup: #42a6ff;
+    --btn-cleanup-hover: #3b95e5;
+    --btn-mood: #bb4fd0;
+    --btn-mood-hover: #a53fb8;
+    --btn-remove: #ff6b60;
+    --btn-remove-hover: #e55c52;
+    --btn-adopted: #9bd45a;
+    --btn-adopted-hover: #8bc34a;
+    
+    /* Console colors (keep high contrast) */
+    --console-bg: #1a1a1a;
+    --console-text: #f0f0f0;
+  }
+}
+
+/* High contrast mode styles for accessibility testing */
+.high-contrast {
+  --bg-color: #000;
+  --text-color: #fff;
+  --card-bg: #222;
+  --border-color: #fff;
+  --highlight-color: #444;
+  
+  /* High contrast button colors */
+  --btn-primary: #0080ff;
+  --btn-primary-hover: #00a0ff;
+  --btn-cleanup: #00c0ff;
+  --btn-cleanup-hover: #00e0ff;
+  --btn-mood: #ff00ff;
+  --btn-mood-hover: #ff40ff;
+  --btn-remove: #ff0000;
+  --btn-remove-hover: #ff4040;
+  --btn-adopted: #00ff00;
+  --btn-adopted-hover: #40ff40;
+  
+  /* Increase text contrast */
+  color: #fff;
+  background-color: #000;
+}
+
+.high-contrast button {
+  border: 2px solid white;
+}
+
+.high-contrast h1, 
+.high-contrast h2, 
+.high-contrast h3 {
+  color: #fff;
+}
+
+.high-contrast .tab {
+  border: 2px solid #fff;
+}
+
+.high-contrast .tab.active {
+  background-color: #00a0ff;
+  color: #fff;
+}
+
+.high-contrast input, 
+.high-contrast select {
+  background-color: #000;
+  color: #fff;
+  border: 2px solid #fff;
+}
+
+/* Debug controls styling */
+.a11y-debug-btn {
+  background-color: #673ab7;
+  color: white;
+  border: 2px solid white;
+  padding: 10px 15px;
+  border-radius: 4px;
+  font-weight: bold;
+  z-index: 9999;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+}
+
+.a11y-debug-btn:hover {
+  background-color: #7e57c2;
+}
+
+.a11y-debug-btn.active {
+  background-color: #ff5722;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  margin: 0;
+  padding: 20px;
+  line-height: 1.5;
+}
+
+.demo-container {
+  max-width: 800px;
+  width: 100%;
+}
+
+.controls {
+  margin-bottom: 20px;
+  padding: 15px;
+  background-color: var(--card-bg);
+  border-radius: 8px;
+  box-shadow: 0 2px 4px var(--shadow-color);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+button {
+  background-color: var(--btn-primary);
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s, box-shadow 0.3s;
+  position: relative;
+}
+
+button:focus-visible {
+  outline: 3px solid #4d90fe;
+  outline-offset: 2px;
+}
+
+button:hover {
+  background-color: var(--btn-primary-hover);
+}
+
+button.cleanup {
+  background-color: var(--btn-cleanup);
+}
+
+button.cleanup:hover {
+  background-color: var(--btn-cleanup-hover);
+}
+
+button.mood {
+  background-color: var(--btn-mood);
+}
+
+button.mood:hover {
+  background-color: var(--btn-mood-hover);
+}
+
+button.remove {
+  background-color: var(--btn-remove);
+}
+
+button.remove:hover {
+  background-color: var(--btn-remove-hover);
+}
+
+button.adopted {
+  background-color: var(--btn-adopted);
+}
+
+button.adopted:hover {
+  background-color: var(--btn-adopted-hover);
+}
+
+button.adopted-action {
+  background-color: var(--btn-primary);
+}
+
+button.adopted-action:hover {
+  background-color: var(--btn-primary-hover);
+}
+
+.mood-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+  margin-top: 10px;
+}
+
+.mood-button {
+  padding: 8px 12px;
+  border-radius: 4px;
+  border: none;
+  cursor: pointer;
+  font-weight: bold;
+  color: white;
+}
+
+.happy { background-color: #FFC107; }
+.sad { background-color: #2196F3; }
+.angry { background-color: #F44336; }
+.confused { background-color: #9C27B0; }
+
+#components-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.console-output {
+  margin-top: 20px;
+  background-color: var(--console-bg);
+  color: var(--console-text);
+  padding: 15px;
+  border-radius: 5px;
+  font-family: monospace;
+  height: 200px;
+  overflow-y: auto;
+}
+
+.log-entry {
+  margin-bottom: 3px;
+  border-bottom: 1px solid var(--border-color);
+  padding-bottom: 3px;
+}
+
+.log-entry.birthday {
+  color: var(--console-birthday);
+}
+
+.log-entry.cleanup {
+  color: var(--console-cleanup);
+}
+
+.log-entry.mood {
+  color: var(--console-mood);
+}
+
+.log-entry.adopted {
+  color: var(--console-adopted);
+}
+
+.log-entry.communication {
+  color: var(--console-communication);
+}
+
+.tabs {
+  display: flex;
+  margin-bottom: 15px;
+}
+
+.tab {
+  padding: 10px 20px;
+  background-color: var(--highlight-color);
+  cursor: pointer;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  margin-right: 5px;
+  position: relative;
+  outline: none;
+  border: none;
+  color: var(--text-color);
+  transition: background-color 0.3s;
+}
+
+.tab.active {
+  background-color: var(--card-bg);
+  font-weight: bold;
+}
+
+.tab:hover {
+  background-color: var(--card-bg);
+}
+
+.tab:focus-visible {
+  box-shadow: 0 0 0 3px #4d90fe;
+  z-index: 1;
+}
+
+.tab-content {
+  display: none;
+}
+
+.tab-content.active {
+  display: block;
+}
+
+.components-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.console-controls {
+  margin-bottom: 10px;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.console-controls label {
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  cursor: pointer;
+}
+
+.console-controls input[type="checkbox"] {
+  cursor: pointer;
+}
+
+.adoption-sections {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.adoption-area {
+  background-color: var(--card-bg);
+  border-radius: 8px;
+  padding: 15px;
+  box-shadow: 0 2px 4px var(--shadow-color);
+}
+
+.adoption-area h3 {
+  margin-top: 0;
+  color: var(--text-color);
+  padding-bottom: 10px;
+  border-bottom: 1px solid var(--border-color);
+  margin-bottom: 15px;
+}
+
+#forever-homes-container {
+  min-height: 100px;
+  background-color: rgba(139, 195, 74, 0.1);
+  border-radius: 8px;
+  padding: 10px;
+}
+
+#adopted-container {
+  min-height: 100px;
+}
+
+/* Communication tab styles */
+.event-bus-demo {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  margin-top: 20px;
+}
+
+@media (max-width: 768px) {
+  .event-bus-demo {
+    grid-template-columns: 1fr;
+  }
+}
+
+#communication-tab h3 {
+  margin-top: 30px;
+  margin-bottom: 15px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid var(--border-color);
+  color: var(--text-color);
+}
+
+#communication-tab .controls p {
+  margin-bottom: 10px;
+  color: var(--text-color);
+}
+
+#communication-tab .controls ul {
+  margin-left: 20px;
+  color: var(--text-color);
+}
+
+#communication-tab .controls li {
+  margin-bottom: 8px;
+}
+
+#communication-tab .controls strong {
+  color: var(--text-color);
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: var(--text-color);
+}
+
+.skip-link {
+  position: absolute;
+  top: -40px;
+  left: 0;
+  background: var(--btn-primary);
+  color: white;
+  padding: 8px;
+  z-index: 100;
+  transition: top 0.3s;
+}
+
+.skip-link:focus {
+  top: 0;
+}
+
+/* Text contrast utility classes */
+.auto-contrast-text {
+  color: var(--auto-text-color, inherit);
+}
+
+.light-bg {
+  --auto-text-color: #000;
+}
+
+.dark-bg {
+  --auto-text-color: #fff;
+}
+
+/* Class for elements that need to be monitored for contrast */
+.contrast-monitor {
+  position: relative;
+  transition: color 0.3s ease;
+}
