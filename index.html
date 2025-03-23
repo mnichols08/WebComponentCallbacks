@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Web Components Lifecycle Demo</title>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+  <div class="demo-container">
+    <header>
+      <h1>Web Components Lifecycle Demo</h1>
+    </header>
+    
+    <div class="tabs" role="tablist">
+      <button class="tab active" id="tab-birthday" role="tab" aria-selected="true" aria-controls="birthday-tab" data-tab="birthday">Birthday Component</button>
+      <button class="tab" id="tab-cleanup" role="tab" aria-selected="false" aria-controls="cleanup-tab" data-tab="cleanup">Farewell Tour Component</button>
+      <button class="tab" id="tab-mood" role="tab" aria-selected="false" aria-controls="mood-tab" data-tab="mood">Mood Ring Component</button>
+      <button class="tab" id="tab-adopted" role="tab" aria-selected="false" aria-controls="adopted-tab" data-tab="adopted">Adoption Papers Component</button>
+      <button class="tab" id="tab-communication" role="tab" aria-selected="false" aria-controls="communication-tab" data-tab="communication">Component Communication</button>
+    </div>
+    
+    <main id="main-content">
+      <div class="tab-content active" id="birthday-tab" role="tabpanel" aria-labelledby="tab-birthday">
+        <div class="controls">
+          <button id="add-birthday">Add Birthday Component</button>
+          <button id="remove-all-birthday" class="remove">Remove All Birthday Components</button>
+        </div>
+        
+        <div id="birthday-container" class="components-container"></div>
+      </div>
+      
+      <div class="tab-content" id="cleanup-tab" role="tabpanel" aria-labelledby="tab-cleanup">
+        <div class="controls">
+          <button id="add-cleanup" class="cleanup">Add Farewell Tour Component</button>
+          <button id="remove-all-cleanup" class="remove">Remove All Farewell Components</button>
+        </div>
+        
+        <div id="cleanup-container" class="components-container"></div>
+      </div>
+      
+      <div class="tab-content" id="mood-tab" role="tabpanel" aria-labelledby="tab-mood">
+        <div class="controls">
+          <button id="add-mood" class="mood">Add Mood Ring Component</button>
+          <button id="remove-all-mood" class="remove">Remove All Mood Components</button>
+          
+          <div class="mood-buttons">
+            <p>Change all moods to:</p>
+            <button class="mood-button happy" data-mood="happy">Happy</button>
+            <button class="mood-button sad" data-mood="sad">Sad</button>
+            <button class="mood-button angry" data-mood="angry">Angry</button>
+            <button class="mood-button confused" data-mood="confused">Confused</button>
+          </div>
+        </div>
+        
+        <div id="mood-container" class="components-container"></div>
+      </div>
+      
+      <div class="tab-content" id="adopted-tab" role="tabpanel" aria-labelledby="tab-adopted">
+        <div class="controls">
+          <button id="add-adopted" class="adopted">Add Adoption Papers</button>
+          <button id="batch-adopt" class="adopted-action">Batch Adopt All Pets</button>
+          <button id="remove-all-adopted" class="remove">Remove All Adoption Papers</button>
+        </div>
+        
+        <div class="adoption-sections">
+          <div class="adoption-area">
+            <h3>Shelter</h3>
+            <div id="adopted-container" class="components-container"></div>
+          </div>
+          
+          <div class="adoption-area">
+            <h3>Forever Homes</h3>
+            <div id="forever-homes-container" class="components-container"></div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="tab-content" id="communication-tab" role="tabpanel" aria-labelledby="tab-communication">
+        <div class="controls">
+          <h3>How Components Talk to Each Other</h3>
+          <p>These examples demonstrate different ways components can communicate:</p>
+          <ul>
+            <li><strong>Parent-Child Communication:</strong> Direct data flow between parent and child</li>
+            <li><strong>Sibling Communication:</strong> Components at the same level talking via parent</li>
+            <li><strong>Global Event Bus:</strong> Components anywhere in the app communicating via a central bus</li>
+          </ul>
+        </div>
+        
+        <h3>1. Parent-Child Communication</h3>
+        <parent-component></parent-component>
+        
+        <h3>2. Sibling Communication</h3>
+        <sibling-container></sibling-container>
+        
+        <h3>3. Global Event Bus Communication</h3>
+        <div class="event-bus-demo">
+          <global-sender></global-sender>
+          <global-listener></global-listener>
+          <global-listener></global-listener>
+        </div>
+      </div>
+    </main>
+    
+    <section aria-label="Console Output">
+      <h3>Console Output:</h3>
+      <div class="console-controls">
+        <label for="show-all-logs">
+          <input type="checkbox" id="show-all-logs">Show logs from all components
+        </label>
+      </div>
+      <div class="console-output" id="console-output" role="log" aria-live="polite"></div>
+    </section>
+  </div>
+
+  <script type="module" src="js/main.js"></script>
+</body>
+</html>
