@@ -19,8 +19,12 @@ This demo application provides interactive examples of:
 3. Open `index.html` in a browser or use a local development server
 
 ```bash
-# Example using Python's built-in server
-python -m http.server
+# Using Node.js http-server (install globally if needed)
+npm install -g http-server
+http-server
+
+# Or with npx
+npx http-server
 ```
 
 ## Demo Sections
@@ -62,7 +66,3 @@ This demo showcases all the standard lifecycle callbacks:
 - **disconnectedCallback()**: Invoked when the element is removed from the document
 - **attributeChangedCallback()**: Called when an observed attribute is changed
 - **adoptedCallback()**: Invoked when the element is moved to a new document
-
-## License
-
-MIT
